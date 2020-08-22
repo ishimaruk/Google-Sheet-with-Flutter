@@ -60,15 +60,13 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
           int.parse(_cashController.text),
           new DateTime.now());
 
-      TransactionService transactionService = TransactionService();
-
       _showSnackbar("กำลังบันทึก");
 
-      transactionService.submitForm(transaction, (String response) {
+      TransactionService.submitForm(transaction, (String response) {
         print("Response: $response");
         if (response == TransactionService.STATUS_SUCCESS) {
           _showSnackbar("บันทึกสำเร็จ");
-           Navigator.pop(context);
+          Navigator.pop(context);
         } else {
           _showSnackbar("Error!");
         }
@@ -102,38 +100,38 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
                     children: <Widget>[
                       showDate(),
                       new Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new Radio(
-                          value: TransactionType.Income,
-                          groupValue: _transactionType,
-                          onChanged:  (TransactionType value) {
-                            setState(() {
-                              _transactionType = value;
-                            });
-                          },
-                        ),
-                        new Text(
-                         TransactionType.Income.name,
-                          style: new TextStyle(fontSize: 16.0),
-                        ),
-                        new Radio(
-                          value: TransactionType.Expense,
-                          groupValue: _transactionType,
-                          onChanged:  (TransactionType value) {
-                            setState(() {
-                              _transactionType = value;
-                            });
-                          },,
-                        ),
-                        new Text(
-                         TransactionType.Expense.name,
-                          style: new TextStyle(
-                            fontSize: 16.0,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new Radio(
+                            value: TransactionType.Income,
+                            groupValue: _transactionType,
+                            onChanged: (TransactionType value) {
+                              setState(() {
+                                _transactionType = value;
+                              });
+                            },
                           ),
-                        ),
-                      ],
-                    ),
+                          new Text(
+                            TransactionType.Income.name,
+                            style: new TextStyle(fontSize: 16.0),
+                          ),
+                          new Radio(
+                            value: TransactionType.Expense,
+                            groupValue: _transactionType,
+                            onChanged: (TransactionType value) {
+                              setState(() {
+                                _transactionType = value;
+                              });
+                            },
+                          ),
+                          new Text(
+                            TransactionType.Expense.name,
+                            style: new TextStyle(
+                              fontSize: 16.0,
+                            ),
+                          ),
+                        ],
+                      ),
                       TextFormField(
                         controller: _messageController,
                         validator: (value) {

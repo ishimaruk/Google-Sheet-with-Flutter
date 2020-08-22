@@ -4,9 +4,9 @@ import 'package:Google_Sheet_with_Flutter/model/Transaction.dart';
 
 class TransactionService {
   static const STATUS_SUCCESS = "SUCCESS";
-  static const URL = "https://script.google.com/macros/s/{id}/exec";
+  static const URL = "https://script.google.com/macros/s/{scriptId}/exec";
 
-  void submitForm(
+  static void submitForm(
       Transaction transaction, void Function(String) callback) async {
     try {
       await http.post(URL, body: transaction.toJson()).then((response) async {
@@ -29,6 +29,7 @@ class TransactionService {
       var jsonList = convert.jsonDecode(response.body) as List;
       List<Transaction> list =
           jsonList.map((json) => Transaction.fromJson(json)).toList();
+      list.sort((a, b) => b.getNoteDateTime().compareTo(a.getNoteDateTime()));
       return list;
     });
   }

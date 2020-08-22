@@ -16,7 +16,10 @@ class _ListTransactionPageState extends State<ListTransactionPage> {
   @override
   void initState() {
     super.initState();
+    getData();
+  }
 
+  void getData() {
     TransactionService.getList().then((items) {
       setState(() {
         this._items = items;
@@ -37,7 +40,9 @@ class _ListTransactionPageState extends State<ListTransactionPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => AddTransactionPage()),
-              );
+              ).then((value) {
+                getData();
+              });
             },
           ),
         ],

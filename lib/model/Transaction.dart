@@ -14,7 +14,7 @@ class Transaction {
     DateTime transactionDate = DateTime.parse(json['transactionDate']);
     TransactionType type = TransactionTypeExtension.parse(json['type']);
     String message = json['message'];
-    int cash = int.parse(json['cash']);
+    int cash = json['cash'];
     DateTime noteDateTime = DateTime.parse(json['noteDateTime']);
     return Transaction(transactionDate, type, message, cash, noteDateTime);
   }
@@ -23,9 +23,13 @@ class Transaction {
         'transactionDate': this._transactionDate.toIso8601String(),
         'type': this._type.name,
         'message': this._message,
-        'cash': this._cash,
+        'cash': this._cash.toString(),
         'noteDateTime': this._noteDateTime.toIso8601String(),
       };
+
+  DateTime getNoteDateTime() {
+    return this._noteDateTime;
+  }
 
   DateTime getTransactionDate() {
     return this._transactionDate;
