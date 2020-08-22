@@ -20,6 +20,10 @@
       * ListTransactionPage.dart
     * service
       * TransactionService.dart
+* resource
+    * script
+      * doGet.gs
+      * doPost.gs
 
 ### Blog
 [Flutter + AppScript+ Google Sheet]: 
