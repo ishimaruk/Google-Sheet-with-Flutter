@@ -26,4 +26,4 @@
       * doPost.gs
 
 ### Blog
-[Flutter + AppScript+ Google Sheet]: https://medium.com/blog-blog/flutter-appscript-google-sheet-5fbf113ef137 [Flutter + AppScript+ Google Sheet]
+[Flutter + AppScript+ Google Sheet]: https://medium.com/blog-blog/flutter-appscript-google-sheet-5fbf113ef137?source=friends_link&sk=b3d94a39712eb01a6ed904ef0f845437
